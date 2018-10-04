@@ -6,23 +6,34 @@ import Login from './components/auth/Login'
 import Register from './components/auth/Register'
 import { Route } from 'react-router-dom';
 
+import {Provider} from 'react-redux'
+// import {createStore, applyMiddleware} from 'redux'
+import store from './store'
+
 import './App.css';
+
+// const store = createStore(()=> [], {}, applyMiddleware())
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
+      <Provider store={store}>
 
-        <Navbar/>
+        <div className="App">
 
-        <Route exact path="/" component={Landing}/>
-        <div className="container">
-          <Route exact path="/login" component={Login}  />
-          <Route exact path="/register" component={Register}  />
+          <Navbar/>
+
+          <Route exact path="/" component={Landing}/>
+          <div className="container">
+            <Route exact path="/login" component={Login}  />
+            <Route exact path="/register" component={Register}  />
+          </div>
+
+          <Footer/>
         </div>
 
-        <Footer/>
-      </div>
+
+      </Provider>
     );
   }
 }
