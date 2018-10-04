@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import Axios from 'axios';
 // import axios from 'axios';
 class Register extends Component {
   constructor(){
@@ -19,6 +20,7 @@ class Register extends Component {
       // console.log('value>>',e.target.value)//this logs the value of that field
       this.setState({[e.target.name ]: e.target.value })//
     }
+
     onSubmit = (e) => {
       e.preventDefault()
 
