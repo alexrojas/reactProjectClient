@@ -5,8 +5,10 @@ import TextFieldGroup from '../common/TextFieldGroup'
 import TextAreaFieldGroup from '../common/TextAreaFieldGroup'
 import InputGroup from '../common/InputGroup'
 import SelectListGroup from '../common/SelectListGroup'
-import {createProfile} from '../../actions/profileActions'
 import {withRouter} from 'react-router-dom'
+import {createProfile, getCurrentProfile} from '../../actions/profileActions'
+import isEmpty from '../../validation/is-empty'
+
 
 class CreateProfile extends Component {
   constructor(props){
@@ -34,9 +36,52 @@ class CreateProfile extends Component {
   // this.onSubmit = this.onSubmit.bind(this)
 }
 
+componentDidMount() {
+  this.props.getCurrentProfile()
+}
+
 componentWillReceiveProps(nextProps) {
+  console.log('props1', nextProps);
     if (nextProps.errors) {
       this.setState({ errors: nextProps.errors });
+    }
+    if(nextProps.profile.profile){
+      const profile = nextProps.profile.profile
+
+      // profile.name = !isEmpty(profile.name) ? profile.name : "";
+      profile.name = !isEmpty(profile.name) ? profile.name : "";
+      profile.status = !isEmpty(profile.status) ? profile.status : "";
+      profile.car = !isEmpty(profile.car) ? profile.car : "";
+      profile.referralCode = !isEmpty(profile.referralCode) ? profile.referralCode : "";
+      profile.bio = !isEmpty(profile.bio) ? profile.bio : "";
+      profile.name = !isEmpty(profile.company) ? profile.company : "";
+      profile.social = !isEmpty(profile.social) ? profile.social : {}
+      profile.twitter = !isEmpty(profile.social.twitter) ? profile.social.twitter : "";
+      profile.facebook = !isEmpty(profile.social.facebook) ? profile.social.facebook : "";
+      profile.instagram = !isEmpty(profile.social.instagram) ? profile.social.instagram : "";
+      profile.youtube = !isEmpty(profile.youtube) ? profile.youtube : "";
+      profile.adress = !isEmpty(profile.address) ? profile.address: {}
+      profile.street = !isEmpty(profile.address.street) ? profile.address.street : "";
+      profile.city = !isEmpty(profile.address.city) ? profile.address.city : "";
+      profile.state = !isEmpty(profile.address.state) ? profile.address.state : "";
+      profile.zip = !isEmpty(profile.address.zip) ? profile.address.zip : "";
+
+
+      this.setState({
+        name: profile.name,
+        status: profile.status,
+        car: profile.car,
+        referralCode: profile.referralCode,
+        bio: profile.bio,
+        street: profile.street,
+        city: profile.city,
+        state: profile.state,
+        zip: profile.zip,
+        twitter: profile.twitter,
+        facebook: profile.facebook,
+        youtube: profile.youtube,
+        instagram: profile.instagram,
+      })
     }
   }
 
@@ -84,6 +129,7 @@ onChange = (e) => {
             value={this.state.street}
             onChange={this.onChange}
             error={errors.street}
+            info="Street Name"
           />
           <TextFieldGroup
             placeholder="City "
@@ -92,6 +138,7 @@ onChange = (e) => {
             value={this.state.city}
             onChange={this.onChange}
             error={errors.city}
+            info="City Name"
           />
           <TextFieldGroup
             placeholder="State "
@@ -100,6 +147,7 @@ onChange = (e) => {
             value={this.state.state}
             onChange={this.onChange}
             error={errors.state}
+            info="State info"
           />
           <TextFieldGroup
             placeholder="Zip code "
@@ -108,6 +156,7 @@ onChange = (e) => {
             value={this.state.zip}
             onChange={this.onChange}
             error={errors.zip}
+            info="Zip code please"
           />
 
         </div>
@@ -168,10 +217,8 @@ onChange = (e) => {
         <div className="container">
           <div className="row">
             <div className="col-md-8 m-auto">
-              <h1 className="display-4 text-center">Create your Profile</h1>
-              <p className="lead text-center">
-                Let's get some more information to make your profile
-              </p>
+              <h1 className="display-4 text-center">Edit Profile</h1>
+
               <small className="d-block pb-3" >* = required fields </small>
 
 
@@ -262,6 +309,8 @@ onChange = (e) => {
 }
 
 CreateProfile.propTypes = {
+  createProfile: PropTypes.func.isRequired,
+  getCurrentProfile: PropTypes.func.isRequired,
   profile: PropTypes.object.isRequired,
   errors: PropTypes.object.isRequired
 };
@@ -271,6 +320,6 @@ const mapStateToProps = state => ({
   errors: state.errors
 });
 
-export default connect(mapStateToProps, { createProfile })(
+export default connect(mapStateToProps, { createProfile, getCurrentProfile })(
   withRouter(CreateProfile)
 );

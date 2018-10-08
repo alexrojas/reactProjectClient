@@ -11,8 +11,10 @@ import {setCurrentUser} from './actions/authActions'
 import {logoutUser} from './actions/authActions'
 import Dashboard from './components/dashboard/Dashboard'
 import CreateProfile from './components/create-profile/CreateProfile'
+import EditProfile from './components/edit-profile/EditProfile'
 import {clearCurrentProfile} from './actions/profileActions'
 import PrivateRoute from './components/common/PrivateRoute'
+import Profiles from './components/profiles/Profiles'
 
 
 import {Provider} from 'react-redux'
@@ -49,6 +51,7 @@ class App extends Component {
           <Route exact path="/" component={Landing}/>
           <div className="container">
             <Route exact path="/login" component={Login}  />
+            <Route exact path="/profiles" component={Profiles}  />
             <Route exact path="/register" component={Register}  />
 
             <Switch>
@@ -56,6 +59,9 @@ class App extends Component {
             </Switch>
             <Switch>
               <PrivateRoute exact path="/create-profile" component={CreateProfile}  />
+            </Switch>
+            <Switch>
+              <PrivateRoute exact path="/edit-profile" component={EditProfile}  />
             </Switch>
           </div>
 
