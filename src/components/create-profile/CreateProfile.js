@@ -48,6 +48,10 @@ onSubmit = (e) =>{
     car: this.state.car,
     referralCode: this.state.referralCode,
     bio: this.state.bio,
+    street: this.state.street,
+    city: this.state.city,
+    state: this.state.state,
+    zip: this.state.zip,
     twitter: this.state.twitter,
     facebook: this.state.facebook,
     youtube: this.state.youtube,
@@ -59,6 +63,7 @@ onSubmit = (e) =>{
 
 
 onChange = (e) => {
+  console.log(e.target.value);
     this.setState({ [e.target.name]: e.target.value });
   }
 
@@ -67,6 +72,48 @@ onChange = (e) => {
   render(){
 
     const {errors, displaySocialInputs} = this.state
+
+    let addressInfo;
+    if(this.state.status === 'yes'){
+      addressInfo = (
+        <div>
+          <TextFieldGroup
+            placeholder="Street "
+            type="text"
+            name="street"
+            value={this.state.street}
+            onChange={this.onChange}
+            error={errors.street}
+          />
+          <TextFieldGroup
+            placeholder="City "
+            type="text"
+            name="city"
+            value={this.state.city}
+            onChange={this.onChange}
+            error={errors.city}
+          />
+          <TextFieldGroup
+            placeholder="State "
+            type="text"
+            name="state"
+            value={this.state.state}
+            onChange={this.onChange}
+            error={errors.state}
+          />
+          <TextFieldGroup
+            placeholder="Zip code "
+            type="text"
+            name="zip"
+            value={this.state.zip}
+            onChange={this.onChange}
+            error={errors.zip}
+          />
+
+        </div>
+
+      )
+    }
 
     let socialInputs;
 
@@ -150,6 +197,11 @@ onChange = (e) => {
                       info=""
                     />
 
+                      {addressInfo}
+
+
+
+
                     <TextFieldGroup
                       placeholder="Car Model S..3..X..Roadster"
                       type="text"
@@ -193,6 +245,7 @@ onChange = (e) => {
                     </div>
 
                     {socialInputs}
+
                     <input type="submit" value="submit" className="btn btn-info btn-block mt-4" />
 
 
