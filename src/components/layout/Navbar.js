@@ -20,6 +20,10 @@ class Navbar extends Component {
           {/* <a className="nav-link" href="register.html">Sign Up</a> */}
             <Link className="nav-link" to={'/dashboard'}>Dashboard</Link>
         </li>
+        <li className="nav-item">
+          {/* <a className="nav-link" href="register.html">Sign Up</a> */}
+            <Link className="nav-link" to={'/feed'}>Post Feed</Link>
+        </li>
 
         <li className="nav-item">
 

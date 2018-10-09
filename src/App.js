@@ -16,6 +16,7 @@ import {clearCurrentProfile} from './actions/profileActions'
 import PrivateRoute from './components/common/PrivateRoute'
 import Profiles from './components/profiles/Profiles'
 import Profile from './components/profile/Profile'
+import Posts from './components/posts/Posts'
 
 
 import {Provider} from 'react-redux'
@@ -64,6 +65,9 @@ class App extends Component {
             </Switch>
             <Switch>
               <PrivateRoute exact path="/edit-profile" component={EditProfile}  />
+            </Switch>
+            <Switch>
+              <PrivateRoute exact path="/feed" component={Posts}  />
             </Switch>
           </div>
 
