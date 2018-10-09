@@ -29,6 +29,24 @@ export const getCurrentProfile = () => dispatch  => {
     })
   })
 }
+ // get profile by name
+export const getProfileByName = (name) => dispatch  => {
+  dispatch(setProfileLoading())
+  axios.get(`/api/profile/user/${name}`)
+  .then((res)=>{
+    console.log("byName>>>>", res)
+    dispatch({
+      type: GET_PROFILE,
+      payload: res.data
+    })
+  })
+  .catch((err)=>{
+    dispatch({
+      type: GET_PROFILE, //not errors because if its empty profile then we will create a button that says you need to create a profile
+      payload: null
+    })
+  })
+}
 
 //create profile
 

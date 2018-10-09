@@ -15,6 +15,7 @@ import EditProfile from './components/edit-profile/EditProfile'
 import {clearCurrentProfile} from './actions/profileActions'
 import PrivateRoute from './components/common/PrivateRoute'
 import Profiles from './components/profiles/Profiles'
+import Profile from './components/profile/Profile'
 
 
 import {Provider} from 'react-redux'
@@ -53,6 +54,7 @@ class App extends Component {
             <Route exact path="/login" component={Login}  />
             <Route exact path="/profiles" component={Profiles}  />
             <Route exact path="/register" component={Register}  />
+            <Route exact path="/profile/:name" component={Profile}  />
 
             <Switch>
               <PrivateRoute exact path="/dashboard" component={Dashboard}  />
