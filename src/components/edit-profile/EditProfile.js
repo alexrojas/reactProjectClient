@@ -61,10 +61,10 @@ componentWillReceiveProps(nextProps) {
       profile.instagram = !isEmpty(profile.social.instagram) ? profile.social.instagram : "";
       profile.youtube = !isEmpty(profile.youtube) ? profile.youtube : "";
       profile.adress = !isEmpty(profile.address) ? profile.address: {}
-      profile.street = !isEmpty(profile.address.street) ? profile.address.street : "";
-      profile.city = !isEmpty(profile.address.city) ? profile.address.city : "";
-      profile.state = !isEmpty(profile.address.state) ? profile.address.state : "";
-      profile.zip = !isEmpty(profile.address.zip) ? profile.address.zip : "";
+      // profile.street = !isEmpty(profile.address.street) ? profile.address.street : "";
+      // profile.city = !isEmpty(profile.address.city) ? profile.address.city : "";
+      // profile.state = !isEmpty(profile.address.state) ? profile.address.state : "";
+      // profile.zip = !isEmpty(profile.address.zip) ? profile.address.zip : "";
 
 
       this.setState({

@@ -15,17 +15,17 @@ class ProfileItem extends Component {
           </div> */}
           <div className="col-lg-6 col-md-4 col-8">
             <h3>{profile.user.name}</h3>
-            <p>
+            {/* <p> */}
               Availability to Share Charger:  <h5>{profile.status}</h5>{' '}
               {/* {isEmpty(profile.company) ? null : (
                 <span>at {profile.company}</span>
               )} */}
-            </p>
-            <p>
+            {/* </p> */}
+            {/* <p> */}
              Tesla Owner of:  {isEmpty(profile.car) ? null : (
                 <h5>{profile.car}</h5>
               )}
-            </p>
+            {/* </p> */}
             <Link to={`/profile/${profile.name}`} className="btn btn-info">
               View Profile
             </Link>
