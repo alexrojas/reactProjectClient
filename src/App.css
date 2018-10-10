@@ -41,3 +41,9 @@ img {
 .fullAddress{
   margin-left: 20px
 }
+
+.footer1{
+  position: absolute;
+bottom: 0;
+width: 100%;
+}

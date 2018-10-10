@@ -14,3 +14,5 @@ const store = createStore(
 )
 
 export default store
+
+// "proxy": "${process.env.REACT_APP_API_URL}",
