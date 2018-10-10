@@ -6,6 +6,7 @@ import jwt_decode from 'jwt-decode';
 
 
 export const registerUser = (userData, history) => dispatch  => {
+  console.log('QWERTYUIKLJHGFDSADFGHJYTRESDFCVBNHJUYTRDCVBNJUYTREDCVBNJIUYTRFDCVBNJKIUYTF',process.env.REACT_APP_API_URL)
   axios.post('/api/users/register', userData)
   .then((res)=>{
     console.log(res.data)
@@ -53,6 +54,6 @@ export const logoutUser = () => dispatch => {
   dispatch(setCurrentUser({}))
 
   return {
-    
+
   }
 }
