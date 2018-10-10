@@ -55,7 +55,7 @@ class Navbar extends Component {
       <nav className="navbar navbar-expand-sm navbar-dark bg-dark mb-4">
         <div className="container">
 
-          <Link className="navbar-brand" to={'/'}>Tesla Netork</Link>
+          <Link className="navbar-brand" to={'/'}>Tesla Network</Link>
           <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#mobile-nav">
             <span className="navbar-toggler-icon"></span>
           </button>

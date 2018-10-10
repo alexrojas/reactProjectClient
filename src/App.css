@@ -43,7 +43,11 @@ img {
 }
 
 .footer1{
-  position: absolute;
+  position: fixed;
 bottom: 0;
 width: 100%;
+}
+
+.body1{
+  margin-bottom: 20vh
 }
